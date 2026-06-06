@@ -108,6 +108,8 @@ This project includes `render.yaml` for Render service definitions. You can depl
 - Environment variable:
   - `VITE_API_URL` (set to your backend Render URL plus `/api`)
 
+For local frontend development, copy `frontend/.env.sample` to `frontend/.env` and set `VITE_API_URL=http://localhost:5000/api`.
+
 ### Render setup steps
 1. Go to [render.com](https://render.com) and connect your GitHub repository.
 2. Create a new Web Service using the repository root and select the `backend` folder.
