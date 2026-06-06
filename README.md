@@ -89,6 +89,8 @@ hotel-room-booking/
 
 ## Render deployment
 
+This project includes `render.yaml` for Render service definitions. You can deploy both the backend and frontend from the same repository using Render's GitHub integration.
+
 ### Backend (Web Service)
 - Root directory: `backend`
 - Build command: `npm install`
@@ -97,14 +99,26 @@ hotel-room-booking/
   - `MONGO_URI`
   - `JWT_SECRET`
   - `PORT`
-  - `FRONTEND_URL` (set to frontend Render URL)
+  - `FRONTEND_URL` (set to your frontend Render URL)
 
 ### Frontend (Static Site)
 - Root directory: `frontend`
 - Build command: `npm install && npm run build`
 - Publish directory: `dist`
 - Environment variable:
-  - `VITE_API_URL` (set to backend Render URL plus `/api`)
+  - `VITE_API_URL` (set to your backend Render URL plus `/api`)
+
+### Render setup steps
+1. Go to [render.com](https://render.com) and connect your GitHub repository.
+2. Create a new Web Service using the repository root and select the `backend` folder.
+3. Create a new Static Site using the repository root and select the `frontend` folder.
+4. Add environment variables in Render Dashboard or `render.yaml`:
+   - `MONGO_URI`
+   - `JWT_SECRET`
+   - `PORT` (optional, default is `5000`)
+   - `FRONTEND_URL`
+   - `VITE_API_URL`
+5. Deploy both services and verify the frontend can call the backend URL.
 
 ## Authentication
 

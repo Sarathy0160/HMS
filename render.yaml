@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: hotel-room-booking-backend
+    env: node
+    plan: free
+    branch: main
+    root: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: FRONTEND_URL
+        value: https://<your-frontend-service>.onrender.com
+
+  - type: static_site
+    name: hotel-room-booking-frontend
+    branch: main
+    root: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://<your-backend-service>.onrender.com/api
