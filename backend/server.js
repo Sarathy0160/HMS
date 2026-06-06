@@ -12,17 +12,30 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const FRONTEND_URL = process.env.FRONTEND_URL;
+const allowedOrigins = FRONTEND_URL
+  ? FRONTEND_URL.split(',').map((url) => url.trim()).filter(Boolean)
+  : ['http://localhost:5173', 'http://localhost:4173'];
 
 if (!process.env.MONGO_URI) {
   console.error('MONGO_URI is required in environment variables');
   process.exit(1);
 }
 if (!FRONTEND_URL) {
-  console.warn('FRONTEND_URL is not set; CORS will block requests from the frontend unless set in production.');
+  console.warn('FRONTEND_URL is not set; using default local frontend origins for CORS.');
 }
 
 app.use(express.json());
-app.use(cors({ origin: FRONTEND_URL }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      callback(new Error(`CORS origin not allowed: ${origin}`));
+    }
+  })
+);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
