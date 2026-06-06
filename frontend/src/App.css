@@ -1,0 +1,255 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: #17233a;
+  --surface-soft: #1f2a42;
+  --text: #e2e8f0;
+  --accent: #38bdf8;
+  --accent-strong: #0284c7;
+  --danger: #f87171;
+  --success: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top left, #1f2937 0%, #0f172a 100%);
+  color: var(--text);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(15, 23, 42, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a,
+.btn-link {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+}
+
+.btn-link {
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.btn-link:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.page-shell {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-content {
+  padding: 1rem 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.95));
+  padding: 3rem;
+  border-radius: 24px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 1rem auto 1.5rem;
+  color: #cbd5e1;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card,
+.detail-card,
+.form-card,
+.dashboard-card {
+  background: var(--surface);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+.card img,
+.detail-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body,
+.detail-body,
+.form-card {
+  padding: 1.25rem;
+}
+
+.card h3,
+.detail-card h2,
+.form-card h2 {
+  margin-top: 0;
+}
+
+.room-price {
+  font-weight: 700;
+  margin: 0.75rem 0;
+}
+
+.btn-primary,
+.btn-secondary {
+  border: none;
+  border-radius: 999px;
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0f172a;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.form-card form,
+.filter-form,
+.table-wrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-card input,
+.form-card textarea,
+.filter-form input,
+.filter-form select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text);
+}
+
+.form-card textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+}
+
+.error-message,
+.success-message {
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+}
+
+.error-message {
+  background: rgba(248, 113, 113, 0.15);
+  color: #fecaca;
+}
+
+.success-message {
+  background: rgba(34, 197, 94, 0.15);
+  color: #dcfce7;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  padding: 1rem;
+  color: #cbd5e1;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.dashboard-card {
+  padding: 1.75rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
