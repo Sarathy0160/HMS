@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthContext.jsx';
 const Register = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', adminCode: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -41,6 +41,8 @@ const Register = () => {
           <input type="email" name="email" value={form.email} onChange={handleChange} required />
           <label>Password</label>
           <input type="password" name="password" value={form.password} onChange={handleChange} required />
+          <label>Admin registration code (optional)</label>
+          <input type="text" name="adminCode" value={form.adminCode} onChange={handleChange} />
           {error && <div className="error-message">{error}</div>}
           <button type="submit" className="btn-primary" disabled={loading}>
             {loading ? 'Creating account...' : 'Register'}

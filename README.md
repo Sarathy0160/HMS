@@ -117,10 +117,15 @@ For local frontend development, copy `frontend/.env.sample` to `frontend/.env` a
 4. Add environment variables in Render Dashboard or `render.yaml`:
    - `MONGO_URI`
    - `JWT_SECRET`
+   - `ADMIN_REGISTRATION_CODE`
    - `PORT` (optional, default is `5000`)
    - `FRONTEND_URL`
    - `VITE_API_URL`
 5. Deploy both services and verify the frontend can call the backend URL.
+
+### Admin setup
+- Use the registration page with the optional admin registration code to create an admin user.
+- Alternatively, set `role: "admin"` directly in the database for the first user.
 
 ## Authentication
 
